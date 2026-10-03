@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="NIT Nagaland CampusGPT - AI-powered campus knowledge assistant"
+    >
+
+    <title>NIT Nagaland | CampusGPT</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="sidebar">
+
+        <!-- BRAND -->
+
+        <div class="sidebar-header">
+
+            <img
+                class="college-logo"
+                src="{{ url_for('static', filename='images/nit_nagaland_logo.jpeg') }}"
+                alt="NIT Nagaland Logo"
+            >
+
+            <div class="brand-text">
+
+                <h2>
+                    NIT Nagaland
+                </h2>
+
+                <span>
+                    CampusGPT
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NEW CHAT -->
+
+        <button
+            class="new-chat"
+            onclick="newChat()"
+        >
+
+            <span class="plus-icon">
+                +
+            </span>
+
+            <span>
+                New Chat
+            </span>
+
+        </button>
+
+
+        <!-- QUICK QUESTIONS -->
+
+        <div class="sidebar-section">
+
+            <p class="section-title">
+                QUICK QUESTIONS
+            </p>
+
+
+            <button
+                class="quick-question"
+                onclick="askQuickQuestion('What is NIT Nagaland?')"
+            >
+
+                <span class="quick-icon">
+                    🏛️
+                </span>
+
+                <span>
+                    About NIT Nagaland
+                </span>
+
+            </button>
+
+
+            <button
+                class="quick-question"
+                onclick="askQuickQuestion('What B.Tech programmes are offered at NIT Nagaland?')"
+            >
+
+                <span class="quick-icon">
+                    🎓
+                </span>
+
+                <span>
+                    Academic Programmes
+                </span>
+
+            </button>
+
+
+            <button
+                class="quick-question"
+                onclick="askQuickQuestion('Tell me about the hostel facilities at NIT Nagaland.')"
+            >
+
+                <span class="quick-icon">
+                    🏠
+                </span>
+
+                <span>
+                    Hostel Facilities
+                </span>
+
+            </button>
+
+
+            <button
+                class="quick-question"
+                onclick="askQuickQuestion('What M.Tech programmes are offered at NIT Nagaland?')"
+            >
+
+                <span class="quick-icon">
+                    📚
+                </span>
+
+                <span>
+                    M.Tech Programmes
+                </span>
+
+            </button>
+
+
+            <button
+                class="quick-question"
+                onclick="askQuickQuestion('What Ph.D. programmes are offered at NIT Nagaland?')"
+            >
+
+                <span class="quick-icon">
+                    🔬
+                </span>
+
+                <span>
+                    Ph.D. Programmes
+                </span>
+
+            </button>
+
+
+            <button
+                class="quick-question"
+                onclick="askQuickQuestion('Where is NIT Nagaland located?')"
+            >
+
+                <span class="quick-icon">
+                    📍
+                </span>
+
+                <span>
+                    Campus Location
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <!-- SIDEBAR FOOTER -->
+
+        <div class="sidebar-bottom">
+
+            <div class="college-card">
+
+                <img
+                    src="{{ url_for('static', filename='images/nit_nagaland_logo.jpeg') }}"
+                    alt="NIT Nagaland"
+                >
+
+                <div>
+
+                    <strong>
+                        National Institute of Technology Nagaland
+                    </strong>
+
+                    <span>
+                        Campus Knowledge Assistant
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
+    <main class="main">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div class="mobile-brand">
+
+                <img
+                    src="{{ url_for('static', filename='images/nit_nagaland_logo.jpeg') }}"
+                    alt="NIT Nagaland"
+                >
+
+                <div>
+
+                    <strong>
+                        NIT Nagaland CampusGPT
+                    </strong>
+
+                    <small>
+                        AI-powered campus knowledge assistant
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-title">
+
+                <img
+                    src="{{ url_for('static', filename='images/nit_nagaland_logo.jpeg') }}"
+                    alt="NIT Nagaland Logo"
+                >
+
+                <div>
+
+                    <h1>
+                        NIT Nagaland CampusGPT
+                    </h1>
+
+                    <p>
+                        AI-powered campus knowledge assistant
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                <span>
+                    Online
+                </span>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             CHAT AREA
+             ================================================= -->
+
+        <section
+            id="chatBox"
+            class="chat-area"
+        >
+
+
+            <!-- WELCOME -->
+
+            <div
+                id="welcome"
+                class="welcome"
+            >
+
+                <img
+                    class="welcome-logo"
+                    src="{{ url_for('static', filename='images/nit_nagaland_logo.jpeg') }}"
+                    alt="NIT Nagaland Logo"
+                >
+
+
+                <h2>
+                    Welcome to CampusGPT
+                </h2>
+
+
+                <p>
+                    Ask questions about NIT Nagaland,
+                    academic programmes, hostels,
+                    admissions, campus facilities and more.
+                </p>
+
+
+                <!-- SUGGESTIONS -->
+
+                <div class="suggestions">
+
+
+                    <button
+                        onclick="askQuickQuestion('What is NIT Nagaland?')"
+                    >
+
+                        <span class="suggestion-icon">
+                            🏛️
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                About the Institute
+                            </strong>
+
+                            <small>
+                                Learn about NIT Nagaland
+                            </small>
+
+                        </div>
+
+                    </button>
+
+
+                    <button
+                        onclick="askQuickQuestion('What B.Tech programmes are offered at NIT Nagaland?')"
+                    >
+
+                        <span class="suggestion-icon">
+                            🎓
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Academic Programmes
+                            </strong>
+
+                            <small>
+                                Explore available programmes
+                            </small>
+
+                        </div>
+
+                    </button>
+
+
+                    <button
+                        onclick="askQuickQuestion('Tell me about hostel facilities at NIT Nagaland.')"
+                    >
+
+                        <span class="suggestion-icon">
+                            🏠
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Hostel Facilities
+                            </strong>
+
+                            <small>
+                                Explore campus accommodation
+                            </small>
+
+                        </div>
+
+                    </button>
+
+
+                    <button
+                        onclick="askQuickQuestion('What M.Tech programmes are offered at NIT Nagaland?')"
+                    >
+
+                        <span class="suggestion-icon">
+                            📚
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Higher Studies
+                            </strong>
+
+                            <small>
+                                M.Tech and other programmes
+                            </small>
+
+                        </div>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             INPUT AREA
+             ================================================= -->
+
+        <div class="input-wrapper">
+
+            <div class="input-box">
+
+                <textarea
+                    id="question"
+                    rows="1"
+                    maxlength="1000"
+                    placeholder="Ask anything about NIT Nagaland..."
+                    autocomplete="off"
+                    aria-label="Ask CampusGPT"
+                ></textarea>
+
+
+                <button
+                    id="sendButton"
+                    class="send-button"
+                    onclick="askCampusGPT()"
+                    aria-label="Send question"
+                    title="Send"
+                >
+
+                    <span>
+                        ↑
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <p class="disclaimer">
+
+                CampusGPT answers using information available
+                in the NIT Nagaland knowledge base.
+
+            </p>
+
+        </div>
+
+
+    </main>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================================================
+   ELEMENTS
+   ========================================================= */
+
+const questionInput =
+    document.getElementById("question");
+
+const chatBox =
+    document.getElementById("chatBox");
+
+const welcome =
+    document.getElementById("welcome");
+
+const sendButton =
+    document.getElementById("sendButton");
+
+
+
+/* =========================================================
+   ASK CAMPUSGPT
+   ========================================================= */
+
+async function askCampusGPT(question = null) {
+
+    if (!question) {
+
+        question =
+            questionInput.value.trim();
+
+    }
+
+
+    if (!question) {
+
+        questionInput.focus();
+
+        return;
+
+    }
+
+
+    if (sendButton.disabled) {
+
+        return;
+
+    }
+
+
+    /* Hide welcome */
+
+    if (welcome) {
+
+        welcome.style.display = "none";
+
+    }
+
+
+    /* Clear input */
+
+    questionInput.value = "";
+
+    autoResize();
+
+
+    /* Add user message */
+
+    addUserMessage(question);
+
+
+    /* Add typing indicator */
+
+    const typing =
+        addTypingMessage();
+
+
+    sendButton.disabled = true;
+
+
+    try {
+
+        const response =
+            await fetch(
+                "/ask",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        question: question
+                    })
+                }
+            );
+
+
+        let data;
+
+        try {
+
+            data =
+                await response.json();
+
+        } catch (jsonError) {
+
+            throw new Error(
+                "Invalid response from server."
+            );
+
+        }
+
+
+        /* Remove typing */
+
+        typing.remove();
+
+
+        if (
+            response.ok &&
+            data.success
+        ) {
+
+            addBotMessage(
+                data.answer || "No answer was generated.",
+                data.sources || []
+            );
+
+        } else {
+
+            addErrorMessage(
+                data.error ||
+                "CampusGPT could not generate an answer."
+            );
+
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "CampusGPT error:",
+            error
+        );
+
+
+        if (typing) {
+
+            typing.remove();
+
+        }
+
+
+        addErrorMessage(
+            "Unable to connect to CampusGPT. Please make sure the Flask server is running."
+        );
+
+    }
+
+
+    sendButton.disabled = false;
+
+    questionInput.focus();
+
+}
+
+
+
+/* =========================================================
+   USER MESSAGE
+   ========================================================= */
+
+function addUserMessage(message) {
+
+    const div =
+        document.createElement("div");
+
+
+    div.className =
+        "message-row user-row";
+
+
+    div.innerHTML = `
+
+        <div class="message user-message">
+
+            <div class="message-label">
+                You
+            </div>
+
+            <div class="message-text">
+                ${escapeHTML(message)}
+            </div>
+
+        </div>
+
+    `;
+
+
+    chatBox.appendChild(div);
+
+
+    scrollToBottom();
+
+}
+
+
+
+/* =========================================================
+   BOT MESSAGE
+   ========================================================= */
+
+function addBotMessage(
+    answer,
+    sources = []
+) {
+
+    const div =
+        document.createElement("div");
+
+
+    div.className =
+        "message-row bot-row";
+
+
+    const formattedAnswer =
+        formatAnswer(answer);
+
+
+    let sourcesHTML = "";
+
+
+    if (
+        Array.isArray(sources) &&
+        sources.length > 0
+    ) {
+
+        sourcesHTML = `
+
+            <div class="sources">
+
+                <div class="sources-title">
+
+                    <span>
+                        📚
+                    </span>
+
+                    Sources
+
+                </div>
+
+
+                <div class="sources-list">
+
+                    ${
+                        sources
+                        .map(
+                            source => {
+
+                                const filename =
+                                    source.source ||
+                                    "Unknown document";
+
+                                const page =
+                                    source.page ??
+                                    "Unknown";
+
+                                return `
+
+                                    <div class="source-item">
+
+                                        <div class="source-icon">
+                                            PDF
+                                        </div>
+
+                                        <div class="source-info">
+
+                                            <strong>
+                                                ${escapeHTML(
+                                                    String(filename)
+                                                )}
+                                            </strong>
+
+                                            <small>
+                                                Page
+                                                ${escapeHTML(
+                                                    String(page)
+                                                )}
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                `;
+
+                            }
+                        )
+                        .join("")
+                    }
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    div.innerHTML = `
+
+        <div class="bot-avatar">
+
+            <img
+                src="{{ url_for('static', filename='images/nit_nagaland_logo.jpeg') }}"
+                alt="CampusGPT"
+            >
+
+        </div>
+
+
+        <div class="message bot-message">
+
+            <div class="message-label">
+                CampusGPT
+            </div>
+
+
+            <div class="message-text">
+
+                ${formattedAnswer}
+
+            </div>
+
+
+            ${sourcesHTML}
+
+        </div>
+
+    `;
+
+
+    chatBox.appendChild(div);
+
+
+    scrollToBottom();
+
+}
+
+
+
+/* =========================================================
+   TYPING MESSAGE
+   ========================================================= */
+
+function addTypingMessage() {
+
+    const div =
+        document.createElement("div");
+
+
+    div.className =
+        "message-row bot-row";
+
+
+    div.innerHTML = `
+
+        <div class="bot-avatar">
+
+            <img
+                src="{{ url_for('static', filename='images/nit_nagaland_logo.jpeg') }}"
+                alt="CampusGPT"
+            >
+
+        </div>
+
+
+        <div class="message bot-message">
+
+            <div class="message-label">
+                CampusGPT
+            </div>
+
+
+            <div class="typing">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    chatBox.appendChild(div);
+
+
+    scrollToBottom();
+
+
+    return div;
+
+}
+
+
+
+/* =========================================================
+   ERROR MESSAGE
+   ========================================================= */
+
+function addErrorMessage(message) {
+
+    const div =
+        document.createElement("div");
+
+
+    div.className =
+        "message-row bot-row";
+
+
+    div.innerHTML = `
+
+        <div class="bot-avatar">
+
+            <img
+                src="{{ url_for('static', filename='images/nit_nagaland_logo.jpeg') }}"
+                alt="CampusGPT"
+            >
+
+        </div>
+
+
+        <div class="message bot-message error-message">
+
+            <div class="message-label">
+                CampusGPT
+            </div>
+
+
+            <div class="message-text">
+
+                ${escapeHTML(message)}
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    chatBox.appendChild(div);
+
+
+    scrollToBottom();
+
+}
+
+
+
+/* =========================================================
+   QUICK QUESTIONS
+   ========================================================= */
+
+function askQuickQuestion(question) {
+
+    askCampusGPT(question);
+
+}
+
+
+
+/* =========================================================
+   NEW CHAT
+   ========================================================= */
+
+function newChat() {
+
+    chatBox.innerHTML = "";
+
+
+    chatBox.appendChild(
+        welcome
+    );
+
+
+    welcome.style.display =
+        "flex";
+
+
+    questionInput.value = "";
+
+    autoResize();
+
+    questionInput.focus();
+
+}
+
+
+
+/* =========================================================
+   FORMAT ANSWER
+   ========================================================= */
+
+function formatAnswer(text) {
+
+    if (!text) {
+
+        return "";
+
+    }
+
+
+    /*
+       IMPORTANT:
+       Escape HTML BEFORE creating our own HTML.
+       This prevents PDF/Gemini HTML from being executed.
+    */
+
+    let html =
+        escapeHTML(
+            String(text)
+        );
+
+
+    /* Bold */
+
+    html =
+        html.replace(
+            /\*\*(.*?)\*\*/g,
+            "<strong>$1</strong>"
+        );
+
+
+    /* H3 */
+
+    html =
+        html.replace(
+            /^###\s+(.*?)$/gm,
+            "<h3>$1</h3>"
+        );
+
+
+    /* H2 */
+
+    html =
+        html.replace(
+            /^##\s+(.*?)$/gm,
+            "<h3>$1</h3>"
+        );
+
+
+    /* Numbered list */
+
+    html =
+        html.replace(
+            /^\s*\d+\.\s+(.*?)$/gm,
+            "<li>$1</li>"
+        );
+
+
+    /* Bullet list */
+
+    html =
+        html.replace(
+            /^\s*[-•*]\s+(.*?)$/gm,
+            "<li>$1</li>"
+        );
+
+
+    /* Group list items */
+
+    html =
+        html.replace(
+            /((?:<li>.*?<\/li>\s*)+)/gs,
+            "<ul>$1</ul>"
+        );
+
+
+    /* New lines */
+
+    html =
+        html.replace(
+            /\n/g,
+            "<br>"
+        );
+
+
+    return html;
+
+}
+
+
+
+/* =========================================================
+   ESCAPE HTML
+   ========================================================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        text;
+
+
+    return div.innerHTML;
+
+}
+
+
+
+/* =========================================================
+   SCROLL
+   ========================================================= */
+
+function scrollToBottom() {
+
+    chatBox.scrollTo({
+
+        top:
+            chatBox.scrollHeight,
+
+        behavior:
+            "smooth"
+
+    });
+
+}
+
+
+
+/* =========================================================
+   TEXTAREA AUTO RESIZE
+   ========================================================= */
+
+function autoResize() {
+
+    questionInput.style.height =
+        "auto";
+
+
+    questionInput.style.height =
+        Math.min(
+            questionInput.scrollHeight,
+            140
+        ) + "px";
+
+}
+
+
+questionInput.addEventListener(
+    "input",
+    autoResize
+);
+
+
+
+/* =========================================================
+   ENTER TO SEND
+   ========================================================= */
+
+questionInput.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter" &&
+            !event.shiftKey
+        ) {
+
+            event.preventDefault();
+
+            askCampusGPT();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   INITIAL
+   ========================================================= */
+
+autoResize();
+
+questionInput.focus();
+
+
+</script>
+
+
+</body>
+
+</html>
